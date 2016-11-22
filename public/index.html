@@ -1,45 +1,151 @@
 <!DOCTYPE>
 <html ng-app="myApp">
 <head>
-<!-- Latest compiled and minified CSS -->
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
-  <title>Contact List App</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+	height:10%;
+	  margin-top: 0px;
+    padding-top: 0px;
+    background-color: 	#ffcccc	;
+}
+textarea {
+vertical-align: top;
+ text-align: center; 
+   resize: none;
+   width : 300px;
+   height:150px;
+   font-size: 18px; 
+}
+mark {
+    background-color: #00ff80	;
+	
+}
+body {
+    padding : 10px;
+	
+    background-image: url('cs01.jpg');
+   background-size: 25%;
+}
+td, th {
+      margin-top: 0px;
+    padding-top: 0px;
+    text-align: center;
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #00ffbf	;
+}
+
+.row-School {
+  width: 30%;
+}
+.row-Degree {
+  width: 40%;
+}
+.row-LastYear {
+  width: 30%;
+}
+
+.row-Title {
+  width: 10%;
+}
+.row-Description {
+  width: 40%;
+}
+
+} 
+</style>
+  <title>Resume</title>
 </head>
 <body>
+<div style="margin-left:35%">
+   <textarea disabled style"center"> 
+Computer Science Resume
+  Hieu Tran
+  213-268-5497
+  </textarea>
+   </div>
   <div class="container" ng-controller="AppCtrl">
-    <h1>Contact List App</h1>
 
-    <table class="table">
+
+  
+  <div>
+    <h1><left><mark>Education</mark></left></h1>
+    <table align:"left">
+	
+      <tbody>
+     <div class="resume">
+	 	
+		 <th class="row-1 row-School">School</th>
+        <th class="row-2 row-Degree">Degree</th>
+        <th class="row-3 row-LastYear">Last Year</th>
+ 
+	 
+        <tr ng-repeat="edu in resume" ng-if="edu.school" ng-if="edu.degree" ng-if="edu.lastyear"">
+		
+		
+          <td>{{edu.school}}</td>
+          <td>{{edu.degree}}</td>
+          <td>{{edu.lastyear}}</td>
+        </tr>
+		</div>
+      </tbody>
+    </table>
+	</div>
+	
+	<div>
+    <h1 ><left><mark>Skills</mark></left></h1>
+
+    <table>
       <thead>
         <tr>
-          <th>Name</th>         
-          <th>Email</th>
-          <th>Number</th>
-          <th>Action</th>
-          <th>&nbsp;</th>
+       
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><input class="form-control" ng-model="contact.name"></td>
-          <td><input class="form-control" ng-model="contact.email"></td>
-          <td><input class="form-control" ng-model="contact.number"></td>
-          <td><button class="btn btn-primary" ng-click="addContact()">Add Contact</button></td>
-          <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+	  
+     <div class="skills">
+	  <th><center> Skill  </center>   </th>    
+        <tr ng-repeat=" skills in resume " ng-if="skills.skill">
+           <td><center> {{skills.skill}}</center> </td>     
         </tr>
-        <tr ng-repeat="contact in contactlist">
-          <td>{{contact.name}}</td>
-          <td>{{contact.email}}</td>
-          <td>{{contact.number}}</td>
-          <td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
-          <td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
-        </tr>
+		</div>		
       </tbody>
     </table>
+</div>
+	   <h1><left><mark>Projects</mark></left></h1>
+
+		
+		<div>
+    <table>
+      <thead>
+        <tr>
+          		  
+        </tr>
+      </thead>
+      <tbody>
+     <div class="projects">
+        <th class="row-1 row-Title">Title</th>
+        <th class="row-2 row-Description">Description</th>
+		
+        <tr ng-repeat="projects in resume" ng-if="projects.title" ng-if="projects.description">
+          <td>{{projects.title}}</td>   
+		  <td>{{projects.description}}</td> 		  
+        </tr>
+		</div>
+      </tbody>
+    </table>
+	</div>
+
 
   </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
